@@ -35,7 +35,7 @@ public MidiDevice getOutput() {
 public void setDump(boolean bool)
 {
     dump = bool;
-    System.err.println(dump);
+    //System.err.println(dump);
 }
 
 // returns a list of all midi devices that can transmit
@@ -106,7 +106,7 @@ public MidiDevice connect()
 
         if ( dump  )
         {
-            System.err.println("dump receiver set");
+            //System.err.println("dump receiver set");
             dt.setReceiver(new DumpReceiver(System.out, false));
 
 
