@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c4f9ef-4e8c-4de6-ab30-251cdf9973c9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DeviceManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Helper.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MidiRouter/GUI$1.class" afterPath="$PROJECT_DIR$/out/production/MidiRouter/GUI$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MidiRouter/GUI.class" afterPath="$PROJECT_DIR$/out/production/MidiRouter/GUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MidiRouter/Helper.class" afterPath="$PROJECT_DIR$/out/production/MidiRouter/Helper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI.java" afterPath="$PROJECT_DIR$/src/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Helper.java" afterPath="$PROJECT_DIR$/src/Helper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MidiRouter.java" afterPath="$PROJECT_DIR$/src/MidiRouter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,22 +24,26 @@
       <file leaf-file-name="MidiRouter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MidiRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Helper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Helper.java">
+      <file leaf-file-name="DeviceManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DeviceManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="214">
+              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#897#909#0" expanded="true" />
-                <element signature="e#1453#1465#0" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+                <element signature="e#713#714#0" expanded="true" />
+                <element signature="e#746#747#0" expanded="true" />
+                <element signature="e#767#768#0" expanded="true" />
+                <element signature="e#986#998#0" expanded="true" />
+                <element signature="e#1479#1491#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,12 +52,12 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="-1071">
+              <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1539#1547#0" expanded="true" />
-                <element signature="e#2459#2467#0" expanded="true" />
+                <element signature="e#1712#1720#0" expanded="true" />
+                <element signature="e#2591#2599#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +66,8 @@
       <file leaf-file-name="DumpReceiver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DumpReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1593">
-              <caret line="117" column="54" lean-forward="false" selection-start-line="116" selection-start-column="24" selection-end-line="117" selection-end-column="54" />
+            <state relative-caret-position="231">
+              <caret line="479" column="1" lean-forward="true" selection-start-line="479" selection-start-column="1" selection-end-line="479" selection-end-column="1" />
               <folding>
                 <element signature="e#0#15869#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -81,6 +89,9 @@
     <findStrings>
       <find>send</find>
       <find>recei</find>
+      <find>input</find>
+      <find>system.err</find>
+      <find>system.out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,9 +109,10 @@
         <option value="$PROJECT_DIR$/src/DumpReceiver.java" />
         <option value="$PROJECT_DIR$/src/MyReceiver.java" />
         <option value="$PROJECT_DIR$/src/MidiDeviceInitialiser.java" />
+        <option value="$PROJECT_DIR$/src/Helper.java" />
+        <option value="$PROJECT_DIR$/src/DeviceManager.java" />
         <option value="$PROJECT_DIR$/src/MidiRouter.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
-        <option value="$PROJECT_DIR$/src/Helper.java" />
       </list>
     </option>
   </component>
@@ -110,9 +122,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="139" />
-    <option name="y" value="84" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="-28" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -286,15 +298,15 @@
       <workItem from="1511958143183" duration="592000" />
       <workItem from="1511984153813" duration="571000" />
       <workItem from="1511985454514" duration="2504000" />
-      <workItem from="1512048893581" duration="4183000" />
+      <workItem from="1512048893581" duration="8263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21647000" />
+    <option name="totallyTimeSpent" value="25727000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -303,9 +315,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36804566" sideWeight="0.53125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16933334" sideWeight="0.2796875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36804566" sideWeight="0.46875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16933334" sideWeight="0.7203125" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -351,8 +363,8 @@
           <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1539#1547#0" expanded="true" />
-            <element signature="e#2459#2467#0" expanded="true" />
+            <element signature="e#1712#1720#0" expanded="true" />
+            <element signature="e#2591#2599#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -368,14 +380,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helper.java">
+    <entry file="file://$PROJECT_DIR$/src/DeviceManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1455">
           <caret line="103" column="65" lean-forward="true" selection-start-line="103" selection-start-column="65" selection-end-line="103" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#897#909#0" expanded="true" />
-            <element signature="e#1453#1465#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#986#998#0" expanded="true" />
+            <element signature="e#1479#1491#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -557,18 +573,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyReceiver.java" />
     <entry file="file://$PROJECT_DIR$/src/MidiDeviceInitialiser.java" />
-    <entry file="file://$PROJECT_DIR$/src/MidiRouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DumpReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1593">
-          <caret line="117" column="54" lean-forward="false" selection-start-line="116" selection-start-column="24" selection-end-line="117" selection-end-column="54" />
+        <state relative-caret-position="231">
+          <caret line="479" column="1" lean-forward="true" selection-start-line="479" selection-start-column="1" selection-end-line="479" selection-end-column="1" />
           <folding>
             <element signature="e#0#15869#0" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -576,26 +584,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MidiRouter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="-1071">
+          <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1539#1547#0" expanded="true" />
-            <element signature="e#2459#2467#0" expanded="true" />
+            <element signature="e#1712#1720#0" expanded="true" />
+            <element signature="e#2591#2599#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helper.java">
+    <entry file="file://$PROJECT_DIR$/src/DeviceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="214">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#897#909#0" expanded="true" />
-            <element signature="e#1453#1465#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#986#998#0" expanded="true" />
+            <element signature="e#1479#1491#0" expanded="true" />
           </folding>
         </state>
       </provider>
