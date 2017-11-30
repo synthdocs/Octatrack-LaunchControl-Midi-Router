@@ -14,6 +14,7 @@ public class GUI extends JFrame implements ActionListener
     private JComboBox outputDevicesDropdown;
     private DeviceManager deviceManager;
     private JButton connectButton = new JButton("Connect");
+    private JButton dumpButton = new JButton("Toggle Dump");
 
     public GUI(DeviceManager h)
     {
@@ -34,20 +35,35 @@ public class GUI extends JFrame implements ActionListener
                 System.exit(0);
             }
         });
-        setTitle("MidiRouter");
-        setSize(400,  70);
+        setTitle("Midi Signal Router");
+        setSize(600,  180);
         setLocation(100, 100);
 
         this.populateInputDropdown();
         this.populateOutputDropdown();
-        this.setLayout(new GridLayout());
-        this.add(inputDevicesDropdown);
-        this.add(outputDevicesDropdown);
+        this.setLayout(new GridLayout(2,1));
 
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new GridBagLayout());
+        topPanel.add(new JLabel("   Input Device:"));
+        topPanel.add(inputDevicesDropdown);
+        this.add(topPanel);
 
+        JPanel midPanel = new JPanel();
+        midPanel.setLayout(new GridBagLayout());
+        midPanel.add(new JLabel("Output Device: "));
+        midPanel.add(outputDevicesDropdown);
+        this.add(midPanel);
+
+        JPanel bottomPanel = new JPanel();
         connectButton.addActionListener(this);
 
+        //bottomPanel.add(connectButton);
         this.add(connectButton);
+
+        dumpButton.addActionListener(this);
+        this.add(dumpButton);
+
 
         //this.add(label);
 
@@ -76,7 +92,11 @@ public class GUI extends JFrame implements ActionListener
             {
 
                MidiDevice.Info info = deviceManager.getSystemMidiTransmitterDevices().get(i).getDeviceInfo();
-               inputNames.add(info.toString());
+
+               if (!(info.toString().equals("Real Time Sequencer")))
+               {
+                   inputNames.add(info.toString());
+               }
 
 
             }
@@ -104,7 +124,7 @@ public class GUI extends JFrame implements ActionListener
     public void populateOutputDropdown()
     {
 
-        ArrayList<String> inputNames = new ArrayList<String>();
+        ArrayList<String> outputNames = new ArrayList<String>();
 
         try
         {
@@ -114,17 +134,20 @@ public class GUI extends JFrame implements ActionListener
 
 
 
-            for ( int i = 0; i< deviceManager.getSystemMidiReceiverDevices().size(); i++ )
+            for ( int i = 0; i< deviceManager.getSystemMidiTransmitterDevices().size(); i++ )
             {
 
                 MidiDevice.Info info = deviceManager.getSystemMidiReceiverDevices().get(i).getDeviceInfo();
-                inputNames.add(info.toString());
+
+                if (!(info.toString().equals("Real Time Sequencer")) && !(info.toString().equals("Gervill"))  )
+                {
+                    outputNames.add(info.toString());
+                }
 
 
             }
-            String[] nameArray = (String[]) inputNames.toArray(new String[inputNames.size()]);
+            String[] nameArray = (String[]) outputNames.toArray(new String[outputNames.size()]);
             outputDevicesDropdown = new JComboBox(nameArray);
-
 
 
 
@@ -156,18 +179,19 @@ public class GUI extends JFrame implements ActionListener
             {
 
                 String selected = (String) inputDevicesDropdown.getSelectedItem();
-
-                if (  selected.equals(infos[i].toString()))
-                {
-                    try
+                //System.err.println("selected input: " + selected );
+                try {
+                    if (selected.equals(infos[i].toString()) && MidiSystem.getMidiDevice(infos[i]).getMaxTransmitters() == -1)
                     {
                         deviceManager.setInput(MidiSystem.getMidiDevice(infos[i]));
-                    }
-                    catch (MidiUnavailableException ex)
-                    {
-                       System.err.println("couldn't set input device");
+
                     }
 
+                }
+
+                catch (MidiUnavailableException ex)
+                {
+                    System.err.println("couldn't set input device");
                 }
 
                 selected = (String) outputDevicesDropdown.getSelectedItem();
@@ -176,7 +200,10 @@ public class GUI extends JFrame implements ActionListener
                 {
                     try
                     {
-                        deviceManager.setOutput(MidiSystem.getMidiDevice(infos[i]));
+                        if (selected.equals(infos[i].toString()) && MidiSystem.getMidiDevice(infos[i]).getMaxReceivers() == -1)
+                        {
+                            deviceManager.setOutput(MidiSystem.getMidiDevice(infos[i]));
+                        }
                     }
                     catch (MidiUnavailableException ex)
                     {
@@ -187,12 +214,24 @@ public class GUI extends JFrame implements ActionListener
 
 
             }
+            //System.out.println("connecting");
             deviceManager.connect();
+            connectButton.setEnabled(false);
+            connectButton.setText("Connected");
+            inputDevicesDropdown.setEnabled(false);
+            outputDevicesDropdown.setEnabled(false);
 
 
 
 
 
+        }
+        if ( e.getSource() == dumpButton )
+        {
+            deviceManager.setDump(true);
+            dumpButton.setText("Dumping");
+            dumpButton.setEnabled(false);
+            System.out.println("DUMP:" );
         }
      }
 }

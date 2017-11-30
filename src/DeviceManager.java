@@ -4,13 +4,14 @@ import javax.sound.midi.*;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Transmitter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class DeviceManager
 {
 
 
-private DumpReceiver dumpReceiver; // can be used to dump MIDI data to console
+
 private String name;
 private MidiDevice device;
 private MidiDevice input = null;
@@ -29,6 +30,12 @@ public MidiDevice getInput() {
 
 public MidiDevice getOutput() {
     return output;
+}
+
+public void setDump(boolean bool)
+{
+    dump = bool;
+    System.err.println(dump);
 }
 
 // returns a list of all midi devices that can transmit
@@ -86,15 +93,35 @@ public MidiDevice connect()
 {
     try
     {
-        input.open();
+
         output.open();
-        //Receiver rec = output.getReceiver();
+
+        Receiver rec = output.getReceiver();
 
         Transmitter t = input.getTransmitter();
-        //t.setReceiver(rec);
-        // just dumping to the console for now
-        t.setReceiver(dumpReceiver);
-        t.setReceiver(output.getReceiver());
+        Transmitter dt = input.getTransmitter();
+
+        t.setReceiver(rec);
+
+
+        if ( dump  )
+        {
+            System.err.println("dump receiver set");
+            dt.setReceiver(new DumpReceiver(System.out, false));
+
+
+
+            //t.setReceiver(output.getReceiver());
+        }
+
+        if (!(input.isOpen()))
+        {
+            input.open();
+        }
+        if (!(output.isOpen()))
+        {
+            output.open();
+        }
 
     }
 
@@ -130,6 +157,7 @@ public void setInput(MidiDevice dev)
 
 
     input = dev;
+    //System.out.println("input: "+input.getDeviceInfo().toString());
 
 
 
