@@ -14,7 +14,8 @@ public class GUI extends JFrame implements ActionListener
     private JComboBox outputDevicesDropdown;
     private DeviceManager deviceManager;
     private JButton connectButton = new JButton("Connect");
-    private JButton dumpButton = new JButton("Toggle Dump");
+    private JToggleButton dumpButton = new JToggleButton("Console Dump Off");
+
 
     public GUI(DeviceManager h)
     {
@@ -61,7 +62,35 @@ public class GUI extends JFrame implements ActionListener
         //bottomPanel.add(connectButton);
         this.add(connectButton);
 
-        dumpButton.addActionListener(this);
+        dumpButton.addItemListener(new ItemListener()
+        {
+            public void itemStateChanged(ItemEvent ev)
+            {
+                if(ev.getStateChange()==ItemEvent.SELECTED)
+                {
+                    System.out.println("CONSOLE MIDI DUMP ON");
+                    dumpButton.setText("Console Dump On");
+                    deviceManager.setDump(true);
+                    if (deviceManager.isConnected())
+                    {
+                        deviceManager.connect();
+
+                    }
+                }
+                else if(ev.getStateChange()==ItemEvent.DESELECTED) {
+                    System.out.println("CONSOLE MIDI DUMP OFF");
+                    dumpButton.setText("Console Dump Off");
+                    deviceManager.setDump(false);
+
+                    // if we are already connected, toggling the dump will reconnect with new settings
+                    if (deviceManager.isConnected())
+                    {
+                        deviceManager.connect();
+
+                    }
+                }
+            }
+        });
         this.add(dumpButton);
 
 
@@ -193,6 +222,11 @@ public class GUI extends JFrame implements ActionListener
                 {
                     System.err.println("couldn't set input device");
                 }
+                catch (NullPointerException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "Device(s) not Selected!",
+                                                    "Alert", JOptionPane.INFORMATION_MESSAGE);
+                }
 
                 selected = (String) outputDevicesDropdown.getSelectedItem();
 
@@ -214,24 +248,20 @@ public class GUI extends JFrame implements ActionListener
 
 
             }
-            //System.out.println("connecting");
-            deviceManager.connect();
-            connectButton.setEnabled(false);
-            connectButton.setText("Connected");
-            inputDevicesDropdown.setEnabled(false);
-            outputDevicesDropdown.setEnabled(false);
+
+                deviceManager.connect();
+                connectButton.setEnabled(false);
+                connectButton.setText("Connected");
+                inputDevicesDropdown.setEnabled(false);
+                outputDevicesDropdown.setEnabled(false);
+
+
 
 
 
 
 
         }
-        if ( e.getSource() == dumpButton )
-        {
-            deviceManager.setDump(true);
-            dumpButton.setText("Dumping");
-            dumpButton.setEnabled(false);
-            System.out.println("DUMP:" );
-        }
+
      }
 }

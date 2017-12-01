@@ -3,8 +3,6 @@ import javax.sound.midi.MidiSystem;
 import javax.sound.midi.*;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Transmitter;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class DeviceManager
@@ -12,169 +10,167 @@ public class DeviceManager
 
 
 
-private String name;
-private MidiDevice device;
-private MidiDevice input = null;
-private MidiDevice output = null;
-private boolean haveInput = false;
-private boolean haveOutput = false;
-private boolean dump = false;
+    private String name;
+    private MidiDevice device;
+    private MidiDevice input = null;
+    private MidiDevice output = null;
+    private boolean haveInput = false;
+    private boolean haveOutput = false;
+    private boolean dump = false;
+    private boolean connected = false;
 
-MidiDevice launchControl;
-private MidiDevice.Info[] infos = MidiSystem.getMidiDeviceInfo();
+    MidiDevice launchControl;
+    private MidiDevice.Info[] infos = MidiSystem.getMidiDeviceInfo();
 
 
-public MidiDevice getInput() {
-    return input;
-}
+    public MidiDevice getInput()
+    {
+        return input;
+    }
 
-public MidiDevice getOutput() {
+    public MidiDevice getOutput()
+    {
     return output;
-}
+    }
 
-public void setDump(boolean bool)
-{
-    dump = bool;
-    //System.err.println(dump);
-}
+    public void setDump(boolean bool)
+    {
+        dump = bool;
 
-// returns a list of all midi devices that can transmit
-public ArrayList<MidiDevice> getSystemMidiTransmitterDevices() throws MidiUnavailableException
-{
+    }
 
-
-    ArrayList<MidiDevice> transmittersDevices = new ArrayList<MidiDevice>();
-
-
-    for (int i = 0; i < infos.length; i++)
+    // returns a list of all midi devices that can transmit
+    public ArrayList<MidiDevice> getSystemMidiTransmitterDevices() throws MidiUnavailableException
     {
 
 
-        if (MidiSystem.getMidiDevice((infos[i])).getMaxTransmitters() != 0)
+        ArrayList<MidiDevice> transmittersDevices = new ArrayList<MidiDevice>();
+
+
+        for (int i = 0; i < infos.length; i++)
         {
 
-            transmittersDevices.add(MidiSystem.getMidiDevice(infos[i]));
+
+            if (MidiSystem.getMidiDevice((infos[i])).getMaxTransmitters() != 0)
+            {
+
+                transmittersDevices.add(MidiSystem.getMidiDevice(infos[i]));
+            }
+
+
         }
-
-
-    }
     return transmittersDevices;
 
 
-}
-
-
-
-
-// returns a lit of all midi devices that can receive
-public ArrayList<MidiDevice> getSystemMidiReceiverDevices() throws MidiUnavailableException
-{
-
-    ArrayList<MidiDevice> receiverDevices = new ArrayList<MidiDevice>();
-
-
-    for (int i = 0; i < infos.length; i++)
-    {
-
-
-
-        if (MidiSystem.getMidiDevice((infos[i])).getMaxReceivers() != 0)
-        {
-            receiverDevices.add(MidiSystem.getMidiDevice(infos[i]));
-        }
-
-
     }
-    return receiverDevices;
-}
 
-// connects the two midi devices
-public MidiDevice connect()
-{
-    try
+
+    public boolean isConnected()
+    {
+        return connected;
+    }
+
+
+
+
+    // returns a lit of all midi devices that can receive
+    public ArrayList<MidiDevice> getSystemMidiReceiverDevices() throws MidiUnavailableException
     {
 
-        output.open();
-
-        Receiver rec = output.getReceiver();
-
-        Transmitter t = input.getTransmitter();
-        Transmitter dt = input.getTransmitter();
-
-        t.setReceiver(rec);
+        ArrayList<MidiDevice> receiverDevices = new ArrayList<MidiDevice>();
 
 
-        if ( dump  )
+        for (int i = 0; i < infos.length; i++)
         {
-            //System.err.println("dump receiver set");
-            dt.setReceiver(new DumpReceiver(System.out, false));
 
 
 
-            //t.setReceiver(output.getReceiver());
+            if (MidiSystem.getMidiDevice((infos[i])).getMaxReceivers() != 0)
+            {
+                receiverDevices.add(MidiSystem.getMidiDevice(infos[i]));
+            }
+
+
         }
+        return receiverDevices;
+    }
 
-        if (!(input.isOpen()))
+    // connects the two midi devices
+    public MidiDevice connect()
+    {
+        try
         {
-            input.open();
-        }
-        if (!(output.isOpen()))
-        {
+
             output.open();
+
+            Receiver rec = output.getReceiver();
+
+            Transmitter t = input.getTransmitter();
+            Transmitter dt = input.getTransmitter();
+
+             t.setReceiver(rec);
+
+
+            if ( dump  )
+            {
+                 //System.err.println("dump receiver set");
+                dt.setReceiver(new DumpReceiver(System.out, false));
+
+
+
+                //t.setReceiver(output.getReceiver());
+            }
+
+            if (!(input.isOpen()))
+            {
+                input.open();
+            }
+            if (!(output.isOpen()))
+            {
+                output.open();
+            }
+
+        }
+
+        catch (MidiUnavailableException ex)
+        {
+            // TODO
+        }
+        haveInput = true;
+        connected = true;
+        return input;
+
+    }
+
+    //closes the connection
+    public void closeAll()
+    {
+        // only try to close if we have an input/output and its open
+        if (haveInput && !(input.isOpen()))
+        {
+            input.close();
+        }
+        if (haveOutput && !(output.isOpen()))
+        {
+            output.close();
         }
 
     }
 
-    catch (MidiUnavailableException ex)
+
+    public void setInput(MidiDevice dev)
     {
 
+        input = dev;
+
     }
-    haveInput = true;
-    return input;
 
-}
-
-// closes the connection
-public void closeAll()
-{
-    // only try to close if we have an input/output and its open
-    if (haveInput && !(input.isOpen()))
+    public void setOutput(MidiDevice dev)
     {
-        input.close();
+
+        output = dev;
+
     }
-    if (haveOutput && !(output.isOpen()))
-    {
-        output.close();
-    }
-
-}
-
-
-public void setInput(MidiDevice dev)
-{
-
-
-
-
-    input = dev;
-    //System.out.println("input: "+input.getDeviceInfo().toString());
-
-
-
-}
-
-public void setOutput(MidiDevice dev)
-{
-
-    output = dev;
-
-
-
-
-
-
-
-}
 
 
 }
