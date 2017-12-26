@@ -96,12 +96,14 @@ public class DeviceManager
     }
 
     // connects the two midi devices
-    public MidiDevice connect()
+    public MidiDevice connect() throws NullPointerException
     {
         try
         {
 
-            output.open();
+                output.open();
+
+
 
             Receiver rec = output.getReceiver();
 
