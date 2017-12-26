@@ -1,6 +1,0 @@
-# This is a very simple GUI or command line program for connecting midi devices  via computer.
-It was deisgned specifically to run on a Raspberry Pi or similiar turning it into a USB hub, allowing users to control, for example, an Elektron Octatrack which only supports old style midi (you'll need a midi to usb converter cable for this) with a Novation Launch Control which will connect to the computer using a printer cable. A nice Launch Control midi config is provided that offers control of the Octatracks 8 tracks volumes, pans and mutes.
-## Command Line Variant
-Running the Program without any arguments, i.e. java MidiRouter, will automatically default to a Launch Control as the input device and the computers usb (via a usb to Midi cable) as the output device. Making this program run on startup of a computer like the Raspberry Pi automatically routes midi input from a Launch Control to an other Midi devices via a usb to Midi Interface Output. 
-## GUI variant (Recommended)
-The custom (i.e. non default) version of the program can be configured using a GUI, and is run with gui as a command line argument, i.e. by typing java MidiRouter gui. The GUI variant requires you to have some sort of IO, but gives you the option to use your Raspberry Pi to connect any two midi devices and optionally dump midi data to the console.
